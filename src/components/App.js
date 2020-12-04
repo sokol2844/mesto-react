@@ -35,7 +35,7 @@ function App() {
 	}
 
   return (
-    <body className="page">
+    <>
 	<Header />
 	<Main onEditProfile={handleEditProfileClick} 
 	      onAddPlace={handleAddPlaceClick} 
@@ -83,7 +83,7 @@ function App() {
 					<button className="elements__delete-button" type="button"><img src="./images/delete.svg" alt="delete"/></button>
 				</li>
 	</template>
-</body>
+</>
   );
 }
 

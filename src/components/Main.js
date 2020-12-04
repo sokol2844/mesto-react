@@ -4,6 +4,10 @@ import Card from './Card.js'
 import editPath from '../images/edit.svg'
 import addPath from '../images/add.svg'
 
+function catchErr(err) {
+	console.log(err);
+}
+
 export default function Main(props) {
     const[userName,setUserName] = React.useState('');
     const[userDescription ,setUserDescription ] = React.useState('');
@@ -17,6 +21,7 @@ export default function Main(props) {
             setUserDescription(res.about);
             setUserAvatar(res.avatar);
         })
+        .catch(catchErr);
     })
 
     React.useEffect(() => {
@@ -24,6 +29,7 @@ export default function Main(props) {
         .then((res) => {
             setCards(res);
         })
+        .catch(catchErr);
     })
 
     return (
