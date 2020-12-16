@@ -75,6 +75,10 @@ class Api {
         .then(this._checkResponse);
     }
 
+    changeLikeCardStatus(cardID, isLiked) {
+        return isLiked?this.deleteLike(cardID):this.putLike(cardID);
+    }
+
     setUserAvatar(avatar) {
         return fetch(this._options.baseUrl + '/users/me/avatar', {
             method: 'PATCH',
