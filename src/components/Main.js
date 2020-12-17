@@ -27,6 +27,7 @@ export default function Main(props) {
                 {props.cards.map((item) => {
                         return (
                             <Card card={item}
+                            key={item._id}
                             onCardClick={()=>props.onCardClick(item)}
                             onCardLike={()=>props.onCardLike(item)}
                             onCardDelete={()=>props.onCardDelete(item)}/>
