@@ -1,6 +1,5 @@
 import React from 'react'
-import PopupWidthForm from './PopupWidthForm.js'
-import api from '../utils/Api.js'
+import PopupWithForm from './PopupWithForm.js'
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
 
 export default function EditProfilePopup(props) {
@@ -32,16 +31,17 @@ export default function EditProfilePopup(props) {
         });
       }
 
-    return (<PopupWidthForm name='profile-edit' 
+    return (
+    <PopupWithForm name='profile-edit' 
         title='Редактировать профиль' 
         isOpen={props.isOpen} 
         onClose={props.onClose}
-        onSubmit={handleSubmit}
-        children={(
+        onSubmit={handleSubmit}>
             <>
                 <input value={name} onChange={handleChangeName} type="text" className="popup__input popup__input_name" placeholder="Имя" name="name" id='input-name' required minLength="2" maxLength="40"/>
                 <span className='popup__error' id='input-name-error'></span>
                 <input value={description} onChange={handleChangeDescription} type="text" className="popup__input popup__input_about" placeholder="Описание" name="about" id="input-about" required minLength="2" maxLength="200"/>
                 <span className='popup__error' id='input-about-error'></span>
-            </>)}/>)
+            </>
+    </PopupWithForm>)
 }

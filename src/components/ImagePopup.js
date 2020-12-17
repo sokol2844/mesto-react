@@ -1,6 +1,6 @@
 import closePath from '../images/close.svg'
 export default function ImagePopup(props) {
-    const isOpened = !(typeof props.card=='undefined');
+    const isOpened = !!props.card;
     return (
         <div className={isOpened?"popup image-popup popup_opened":"popup image-popup"}>
             <div className="image-popup__container">

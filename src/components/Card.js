@@ -10,7 +10,7 @@ export default function Card(props) {
     const cardLikeButtonClassName = `elements__like-button ${isLiked && 'elements__like-button_liked'}`; 
 
     return (
-        <li key={props.card._id} className="elements__card">
+        <li className="elements__card">
             <img className="elements__foto" src={props.card.link} alt="фото" onClick={props.onCardClick}/>
             <div className="elements__title-group">
                 <h2 className="elements__title">{props.card.name}</h2>

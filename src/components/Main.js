@@ -2,7 +2,6 @@ import React from 'react'
 import Card from './Card.js'
 import editPath from '../images/edit.svg'
 import addPath from '../images/add.svg'
-import api from '../utils/Api.js'
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
 
 export default function Main(props) {

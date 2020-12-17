@@ -1,7 +1,7 @@
 import closePath from '../images/close.svg'
-export default function PopupWidthForm(props) {
+export default function PopupWithForm(props) {
     return (
-        <div className={props.isOpen?`popup popup_type_${props.name} popup_opened `:`popup popup_type_${props.name}`}  >
+        <div className={`popup popup_type_${props.name} ${props.isOpen&&'popup_opened'}`}  >
             <form onSubmit={props.onSubmit} className="popup__container" method="get" name={props.name} noValidate>
                 <h2 className="popup__title">{props.title}</h2>
                 {props.children}

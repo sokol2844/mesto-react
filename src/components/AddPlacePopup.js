@@ -1,5 +1,5 @@
 import React from 'react'
-import PopupWidthForm from './PopupWidthForm.js'
+import PopupWithForm from './PopupWithForm.js'
 
 export default function AddPlacePopup(props) {
     const[name, setName] = React.useState('');
@@ -20,19 +20,17 @@ export default function AddPlacePopup(props) {
     }
 
     return (
-        <PopupWidthForm 
+        <PopupWithForm 
         name='card-add' 
         title='Новое место' 
         isOpen={props.isOpen} 
         onClose={props.onClose} 
         onSubmit={handleSubmit}
-	children={(
-		<>
-			<input value={name} onChange={handleChangeName} type="text" className="popup__input popup__input_name" placeholder="Название" name="title" id="input-title" required minLength="2" maxLength="30"/>
-			<span className='popup__error' id='input-title-error'></span>
-			<input value={link} onChange={handleChangeLink} type="url" className="popup__input popup__input_about" placeholder="Ссылка на картинку" name="link" id="input-link" required/>
-			<span className='popup__error' id='input-link-error'></span>
-		</>
-	)}/>
+    >
+            <input value={name} onChange={handleChangeName} type="text" className="popup__input popup__input_name" placeholder="Название" name="title" id="input-title" required minLength="2" maxLength="30"/>
+            <span className='popup__error' id='input-title-error'></span>
+            <input value={link} onChange={handleChangeLink} type="url" className="popup__input popup__input_about" placeholder="Ссылка на картинку" name="link" id="input-link" required/>
+            <span className='popup__error' id='input-link-error'></span>
+    </PopupWithForm>
     )
 }

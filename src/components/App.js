@@ -2,9 +2,8 @@ import React from 'react'
 import Header from './Header.js'
 import Main from './Main.js'
 import Footer from './Footer.js'
-import PopupWidthForm from './PopupWidthForm.js'
 import ImagePopup from './ImagePopup.js'
-import api from '../utils/Api.js'
+import api from '../utils/api.js'
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js'
 import EditProfilePopup from './EditProfilePopup.js'
 import EditAvatarPopup from './EditAvatarPopup.js'
@@ -25,12 +24,12 @@ function App() {
 	function handleCardLike(card) {
         const isLiked = card.likes.some(i => i._id === currentUser._id);
         
-        api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
-            
+		api.changeLikeCardStatus(card._id, isLiked)
+		.then((newCard) => {
           const newCards = cards.map((c) => c._id === card._id ? newCard : c);
-          
           setCards(newCards);
-        });
+		})
+		.catch(catchErr);
     }
 
     function handleCardDelete(card) {
@@ -74,7 +73,7 @@ function App() {
             setCards(res);
         })
         .catch(catchErr);
-    });
+    }, []);
 
 	React.useEffect(() => {
         api.getUserInfo()
@@ -115,7 +114,6 @@ function App() {
 	      onEditAvatar={handleEditAvatarClick}
 		  onCardClick={handleCardClick}
 		  cards = {cards}
-		  setCards = {setCards}
 		  onCardLike = {handleCardLike}
 		  onCardDelete = {handleCardDelete}/>
 	<Footer />
@@ -127,26 +125,11 @@ function App() {
 	<AddPlacePopup isOpen={isAddPlacePopupOpen}
 	 			   onClose={closeAllPopups} 
 				   onCardAdd={handleAddPlaceSubmit}/>
-	<PopupWidthForm name='card-delete' title='Вы уверены?'/>
 	<EditAvatarPopup isOpen={isEditAvatarPopupOpen} 
 					 onClose={closeAllPopups} 
 					 onUpdateAvatar={handleUpdateAvatar}/>
 	<ImagePopup card={selectedCard}
 	onClose={closeAllPopups}/>
-	<template id="template-list-item">
-				<li className="elements__card">
-					<img className="elements__foto" src="#" alt="фото"/>
-					<div className="elements__title-group">
-						<h2 className="elements__title"></h2>
-						<div className="elements__like-block">
-							<button className="elements__like-button" type="button"></button>
-							<h3 className="elements__like-nr">2</h3>
-						</div>
-						
-					</div>
-					<button className="elements__delete-button" type="button"><img src="./images/delete.svg" alt="delete"/></button>
-				</li>
-	</template>
 </CurrentUserContext.Provider>
   );
 }
